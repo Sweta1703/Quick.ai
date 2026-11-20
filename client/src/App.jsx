@@ -10,13 +10,23 @@ import RemoveBackground from "./pages/RemoveBackground";
 import RemoveObject from "./pages//RemoveObject";
 import ReviewResume from "./pages/ReviewResume";
 import Community from "./pages/Community";
-import { useAuth } from "@clerk/clerk-react";
+import { useAuth } from "@clerk/react";
 import { useEffect } from "react";
 import {Toaster} from 'react-hot-toast'
 const App = () => {
   return (
     <div>
-      <Toaster/>
+      <Toaster
+        position="top-center"
+        toastOptions={{
+          duration: 4000,
+          style: {
+            fontSize: '14px',
+            color: '#1f2937',
+            fontWeight: 500,
+          },
+        }}
+      />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/ai" element={<Layout />}>

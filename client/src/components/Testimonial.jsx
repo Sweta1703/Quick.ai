@@ -1,6 +1,5 @@
 import React from "react";
 import { assets } from "../assets/assets";
-import ayush from "../assets/ayush.jpg"
 const Testimonial = () => {
   const [tooltip, setTooltip] = React.useState({
     visible: false,
@@ -34,11 +33,12 @@ const Testimonial = () => {
         "https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=200",
     },
     {
-      name: "Ayush Singh",
+      name: "Piyush Goenka",
       title: "Full Stack Engineer",
       message:
         "This solution not only simplified our workflow but also improved our UI consistency across the board. Excellent tool for modern teams.",
-      image:ayush,
+      image:
+        "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=200",
     },
     {
       name: "Disha Nair",

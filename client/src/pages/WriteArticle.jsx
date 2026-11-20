@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Edit, Sparkles } from "lucide-react";
 import axios from 'axios'
-import { useAuth } from "@clerk/clerk-react";
+import { useAuth } from "@clerk/react";
 import Markdown from 'react-markdown'
 import toast from "react-hot-toast";
 axios.defaults.baseURL=import.meta.env.VITE_BASE_URL;
@@ -19,18 +19,24 @@ const WriteArticle = () => {
   const onSubmitHandler=async(e)=>{
     e.preventDefault();
     try {
-      setLoading(true)
-      const prompt=`Write an article about ${input} in ${selectedLength.text}`
-      const {data}=await axios.post('/api/ai/generate-article',{prompt,length:selectedLength.length},{
-        headers:{Authorization:`Bearer ${await getToken()}`}
-      })
-      if(data.success){
+      setLoading(true);
+      const token = await getToken();
+      if (!token) {
+        toast.error("Login session expired. Please sign out and sign in again.");
+        setLoading(false);
+        return;
+      }
+      const prompt = `Write an article about ${input} in ${selectedLength.text}`;
+      const { data } = await axios.post('/api/ai/generate-article', { prompt, length: selectedLength.length }, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      if (data && data.success) {
         setContent(data.content)
-      }else{
-        toast.error(data.message)
+      } else {
+        toast.error(data?.message || (typeof data === 'string' ? data : "Failed to generate article"))
       }
     } catch (error) {
-      toast.error(error.message)
+      toast.error(error.response?.data?.message || error.message || "Failed to generate article")
     }
     setLoading(false)
   }

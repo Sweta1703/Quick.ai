@@ -1,6 +1,6 @@
 import { Eraser, Sparkles } from "lucide-react";
 import React, { useState } from "react";
-import { useAuth } from "@clerk/clerk-react";
+import { useAuth } from "@clerk/react";
 import toast from "react-hot-toast";
 import axios from 'axios'
 axios.defaults.baseURL=import.meta.env.VITE_BASE_URL;
@@ -26,7 +26,7 @@ const RemoveBackground = () => {
         toast.error(data.message)
     }
       } catch (error) {
-         toast.error(error.message)
+         toast.error(error.response?.data?.message || error.message)
       }
       setLoading(false)
     };

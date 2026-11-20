@@ -1,6 +1,6 @@
 import { FileTextIcon, Sparkles } from "lucide-react";
 import React, { useState } from "react";
-import { useAuth } from "@clerk/clerk-react";
+import { useAuth } from "@clerk/react";
 import toast from "react-hot-toast";
 import Markdown from "react-markdown";
 import axios from 'axios'
@@ -27,8 +27,8 @@ const ReviewResume = () => {
         toast.error(data.message)
     } 
   } catch (error) {
-          toast.error(error.message)
-        }
+    toast.error(error.response?.data?.message || error.message)
+  }
         setLoading(false);
       };
   return (

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Scissors, Sparkles } from "lucide-react";
 import axios from 'axios'
-import { useAuth } from "@clerk/clerk-react";
+import { useAuth } from "@clerk/react";
 import toast from "react-hot-toast";
 axios.defaults.baseURL=import.meta.env.VITE_BASE_URL;
 const RemoveObject = () => {
@@ -29,7 +29,7 @@ const RemoveObject = () => {
         toast.error(data.message)
     }
   }catch(error){
-    toast.error(error.message)
+    toast.error(error.response?.data?.message || error.message)
   }
   setLoading(false)
   };

@@ -1,4 +1,4 @@
-import { useAuth } from "@clerk/clerk-react";
+import { useAuth } from "@clerk/react";
 import { Hash, Sparkles } from "lucide-react";
 import React, { useState } from "react";
 import axios from 'axios'
@@ -24,20 +24,26 @@ const BlogTitles = () => {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
-    setLoading(true)
-    const prompt = `Generate a blog title for the keyword ${input} in the category ${selectedCategory}`
+      setLoading(true);
+      const token = await getToken();
+      if (!token) {
+        toast.error("Login session expired. Please sign out and sign in again.");
+        setLoading(false);
+        return;
+      }
+      const prompt = `Generate a blog title for the keyword ${input} in the category ${selectedCategory}`;
 
-    const { data } = await axios.post('/api/ai/generate-blog-title', { prompt }, {
-        headers: { Authorization: `Bearer ${await getToken()}` }
-    })
+      const { data } = await axios.post('/api/ai/generate-blog-title', { prompt }, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
 
-    if (data.success) {
+    if (data && data.success) {
         setContent(data.content)
     } else {
-        toast.error(data.message)
+        toast.error(data?.message || (typeof data === 'string' ? data : "Failed to generate blog title"))
     }
 } catch (error) {
-    toast.error(error.message)
+    toast.error(error.response?.data?.message || error.message || "Failed to generate blog title")
 }
 setLoading(false)
   };

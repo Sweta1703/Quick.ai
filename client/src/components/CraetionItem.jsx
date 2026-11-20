@@ -6,33 +6,33 @@ const CreationItem = ({ item }) => {
   return (
     <div
       onClick={() => setExpanded(!expanded)}
-      className="p-4 max-w-5xl text-sm bg-white border border-gray-200 rounded-lg cursor-pointer"
+      className="p-4 max-w-5xl text-sm bg-white border border-gray-200 rounded-lg cursor-pointer hover:border-gray-300 transition-all shadow-xs"
     >
-      <div className="flex justify-center items-center gap-4">
-        <div>
-          <h2>{item.prompt}</h2>
-          <p className="text-gray-500">
+      <div className="flex justify-between items-center gap-4">
+        <div className="flex-1 min-w-0">
+          <h2 className="font-medium text-slate-800 truncate">{item.prompt}</h2>
+          <p className="text-gray-500 text-xs mt-1">
             {item.type} - {new Date(item.created_at).toLocaleDateString()}
           </p>
         </div>
-        <button className="bg-[#EFF6FF] border border-[#BFDBFE] text-[#1E40AF] px-4 py-1 rounded-full">
+        <button className="bg-[#EFF6FF] border border-[#BFDBFE] text-[#1E40AF] px-4 py-1 rounded-full shrink-0 text-xs capitalize">
           {item.type}
         </button>
       </div>
 
       {expanded && (
-        <div>
+        <div className="mt-4 pt-3 border-t border-gray-100">
           {item.type === "image" ? (
             <div>
               <img
                 src={item.content}
                 alt="image"
-                className="mt-3 w-full max-w-md"
+                className="w-full max-w-md rounded-md border border-gray-200"
               />
             </div>
           ) : (
-            <div className="mt-3 h-full overflow-y-scroll text-sm text-slate-700">
-              <div>{item.content}</div>
+            <div className="text-sm text-slate-700 bg-slate-50 p-3 rounded-md overflow-x-auto whitespace-pre-wrap leading-relaxed">
+              {item.content}
             </div>
           )}
         </div>

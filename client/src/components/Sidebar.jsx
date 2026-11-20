@@ -1,5 +1,5 @@
 import React from "react";
-import { Protect, useClerk, useUser } from "@clerk/clerk-react";
+import { Show, useClerk, useUser } from "@clerk/react";
 import { assets } from "../assets/assets";
 import {
   Eraser,
@@ -66,15 +66,17 @@ const Sidebar = ({ sidebar, setSidebar }) => {
       <div className="w-full border-t border-gray-200 p-4 px-7 flex items-center justify-between">
         <div
           onClick={openUserProfile}
-          className="flex gap-2 items-center cursor pointer"
+          className="flex gap-2 items-center cursor-pointer"
         >
           <img src={user.imageUrl} className="w-8 rounded-full" alt="" />
           <div>
             <h1 className="font-medium text-sm">{user.fullName}</h1>
             <p className="text-xs text-gray-400">
-              <Protect plan="premium" fallback="free">
+              <Show when={{
+                plan: "premium"
+              }} fallback="free">
                 Premium
-              </Protect>
+              </Show>
               Plan
             </p>
           </div>

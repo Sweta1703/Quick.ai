@@ -3,7 +3,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { assets } from "../assets/assets";
 import Sidebar from "../components/Sidebar";
 import { Menu, X } from "lucide-react";
-import { SignIn, useUser } from "@clerk/clerk-react";
+import { SignIn, useUser } from "@clerk/react";
 const Layout = () => {
   const navigate = useNavigate();
   const [sidebar, setSidebar] = useState(false);
