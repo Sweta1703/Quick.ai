@@ -1,6 +1,4 @@
-# ⚡ Quick.ai - Full-Stack AI Creation & Productivity Suite
-
-![Quick.ai Banner](client/src/assets/gradientBackground.png)
+# ⚡ Quick.ai - AI SaaS Platform
 
 **Quick.ai** is an all-in-one AI-powered SaaS platform built with **React**, **Express.js**, **Google Gemini**, **ClipDrop**, **Cloudinary**, and **Neon PostgreSQL**. It empowers users to generate articles, craft compelling blog titles, generate and edit images, and get detailed AI feedback on their resumes through a clean, intuitive dashboard.
 
