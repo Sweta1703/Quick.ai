@@ -1,5 +1,10 @@
 # ⚡ Quick.ai - AI SaaS Platform
 
+[![Live Demo](https://img.shields.io/badge/Demo-Live%20on%20Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://quick-ai-eight-kappa.vercel.app/)
+[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg?style=for-the-badge)](LICENSE)
+
+🌐 **Live Application:** [https://quick-ai-eight-kappa.vercel.app/](https://quick-ai-eight-kappa.vercel.app/)
+
 **Quick.ai** is an all-in-one AI-powered SaaS platform built with **React**, **Express.js**, **Google Gemini**, **ClipDrop**, **Cloudinary**, and **Neon PostgreSQL**. It empowers users to generate articles, craft compelling blog titles, generate and edit images, and get detailed AI feedback on their resumes through a clean, intuitive dashboard.
 
 ---
